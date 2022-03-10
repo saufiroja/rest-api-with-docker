@@ -8,6 +8,7 @@
     "dev": "nodemon -L src/app.js",
     "db:init": "npx sequelize init",
     "db:migrate": "npx sequelize db:migrate",
+    "db:migrate:undo": "npx sequelize db:migrate:undo",
     "db:generate": "npx sequelize migration:generate --name",
     "lint:init": "eslint --init",
     "lint": "eslint ."
