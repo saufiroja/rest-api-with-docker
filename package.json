@@ -8,12 +8,16 @@
     "dev": "nodemon -L src/app.js",
     "db:init": "npx sequelize init",
     "db:migrate": "npx sequelize db:migrate",
-    "db:generate": "npx sequelize migration:generate --name"
+    "db:generate": "npx sequelize migration:generate --name",
+    "lint:init": "eslint --init",
+    "lint": "eslint ."
   },
   "author": "Muhammad Saufi Roja",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.10.0",
     "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
     "sequelize-cli": "^6.4.1"
   },
   "dependencies": {
