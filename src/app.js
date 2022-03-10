@@ -6,8 +6,6 @@ const cors = require('cors');
 
 const app = express();
 
-// const authRouter = require('./routers/auth.routers');
-
 // Desc: Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,10 +22,9 @@ app.use((req, res, next) => {
 });
 
 // Desc: Routes
-app.use('/api', require('./routers/auth.routers'));
-app.use('/', (req, res) => {
-  res.send('Hello World');
-});
+const authRouter = require('./routers/auth.routers');
+
+app.use('/api', authRouter);
 
 // Desc : Error handler
 // Input : Error, Request, Response, Next
