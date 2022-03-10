@@ -1,0 +1,31 @@
+{
+  "name": "rest-api-with-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon -L src/app.js",
+    "db:init": "npx sequelize init",
+    "db:migrate": "npx sequelize db:migrate",
+    "db:generate": "npx sequelize migration:generate --name"
+  },
+  "author": "Muhammad Saufi Roja",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.3",
+    "sequelize": "^6.17.0"
+  }
+}
