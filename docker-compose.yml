@@ -1,33 +1,5 @@
 version: '3.8'
 services:
-  # DATABASE
-  sequelize_db:
-    container_name: sequelize_db_c
-    image: 'postgres:12'
-    env_file:
-      - .env
-    ports:
-      - '5433:5432'
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASS}
-      - POSTGRES_DB=${DB_NAME}
-    volumes:
-      - 'database:/var/lib/postgresql/data'
-
-  # MIGRATE
-  migrate:
-    build: .
-    entrypoint: npm run db:migrate
-    env_file:
-      - .env
-    environment:
-      - NODE_ENV=${NODE_ENV}
-    depends_on:
-      - sequelize_db
-    links:
-      - sequelize_db
-
   # APP
   rest_api:
     container_name: rest_api_c
@@ -54,6 +26,54 @@ services:
       - ./src:/app/src
       - /app/src/node_modules
     command: npm run dev
+
+  # DATABASE
+  sequelize_db:
+    container_name: sequelize_db_c
+    image: 'postgres:12'
+    env_file:
+      - .env
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - 'database:/var/lib/postgresql/data'
+
+  # LINT
+  lint:
+    build: .
+    entrypoint: npm run lint
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+
+  # MIGRATE
+  migrate:
+    build: .
+    entrypoint: npm run db:migrate
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    depends_on:
+      - sequelize_db
+    links:
+      - sequelize_db
+  migrate_undo:
+    build: .
+    entrypoint: npm run db:migrate:undo
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    depends_on:
+      - sequelize_db
+    links:
+      - sequelize_db
 
 volumes:
   database: {}
