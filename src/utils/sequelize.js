@@ -11,8 +11,4 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   },
 });
 
-sequelize.authenticate().then(() => {
-  console.log('Connection has been established successfully.');
-});
-
 module.exports = sequelize;
