@@ -23,8 +23,10 @@ app.use((req, res, next) => {
 
 // Desc: Routes
 const authRouter = require('./routers/auth.routers');
+const postRouter = require('./routers/post.routers');
 
 app.use('/api', authRouter);
+app.use('/api', postRouter);
 
 // Desc : Error handler
 // Input : Error, Request, Response, Next

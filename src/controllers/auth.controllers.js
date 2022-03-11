@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
+
 const { User } = require('../database/models');
+const { generateToken } = require('../utils/token.utils');
 
 // Desc   : register
 // Routes : POST /api/register
@@ -24,9 +26,12 @@ const regitser = async (req, res, next) => {
       password,
     });
 
+    const accessToken = generateToken(user);
+
     return res.status(201).json({
       message: 'User created successfully',
       user,
+      accessToken,
     });
   } catch (err) {
     next(err);
