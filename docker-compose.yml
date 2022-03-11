@@ -20,6 +20,7 @@ services:
       - DB_NAME=${DB_NAME}
       - JWT_PUBLIC_KEY=${JWT_PUBLIC_KEY}
       - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
+      - JWT_ALGORITHMS=${JWT_ALGORITHMS}
     depends_on:
       - sequelize_db
     links:
