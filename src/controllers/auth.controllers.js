@@ -60,9 +60,12 @@ const login = async (req, res, next) => {
       });
     }
 
+    const accessToken = generateToken(user);
+
     return res.status(200).json({
       message: 'Login successfully',
       user,
+      accessToken,
     });
   } catch (error) {
     next(error);
