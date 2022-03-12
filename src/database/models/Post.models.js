@@ -26,6 +26,7 @@ Post.init(
     tableName: 'Post',
     timestamps: true,
     freezeTableName: true,
+    paranoid: true,
   }
 );
 
