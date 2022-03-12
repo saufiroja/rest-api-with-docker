@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 const { User } = require('../database/models');
 const { generateToken } = require('../utils/token.utils');
 
-// Desc   : register
-// Routes : POST /api/register
-// access : public
+// @Desc   : register
+// @Routes : POST /api/register
+// @access : public
 const regitser = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
@@ -38,9 +38,9 @@ const regitser = async (req, res, next) => {
   }
 };
 
-// Desc   : login
-// Routes : POST /api/login
-// access : public
+// @Desc   : login
+// @Routes : POST /api/login
+// @access : public
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
